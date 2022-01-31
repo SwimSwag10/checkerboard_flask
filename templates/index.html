@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{url_for('static', filename='/css/style.css')}}">
+  <title>Document</title>
+  <style>
+    td {
+      width: 50px;
+      height: 50px;
+    }
+
+    .color1 {
+      background-color: {{ x_color }};
+    }
+
+    .color2 {
+      background-color: {{ y_color }};
+    }
+
+    h2 {
+      color: red;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      text-align: center;
+      font-size: 4em;
+    }
+  </style>
+</head>
+<body>
+  {% if x % 2 == 0 and y % 2 == 0 %}
+
+  <table>
+    {% for i in range(y) %}
+      <tr>
+        {% for j in range(x) %}
+            <td class="color{{ (i+j)%2+1 }}"></td>
+        {% endfor %}
+      </tr>
+    {% endfor %}
+  </table>
+
+  {% else %}
+    <h2>Input an even x and y number</h2>
+  {% endif %}
+</body>
+</html>
